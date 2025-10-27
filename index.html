@@ -1,11 +1,1018 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>My Legal Pages</title>
-</head>
-<body>
-  <h1>✅ TikTok Login Redirect OK</h1>
-  <p>If you see this page, redirect is working.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Danh sách Video TikTok</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+      video {
+        width: 230px;
+        border-radius: 10px;
+      }
+      img {
+        width: 150px;
+        border-radius: 8px;
+      }
+      button {
+        padding: 6px 12px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #005ad1;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Danh sách Video</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Video Preview</th>
+          <th>Cover Image</th>
+          <th>Thông Tin</th>
+          <th>Download</th>
+        </tr>
+      </thead>
+      <tbody id="videoTable"></tbody>
+    </table>
+
+    <script>
+      const videosData = [
+        {
+          video_id: "7561697585078062343",
+          video_title: "Nhanh tay mng ơi #xiaomiredmi ",
+          belonged_creator_id: "6720151836252849154",
+          belonged_creator_handle: "emdanhihi",
+          revenue: 568243065.59,
+          views: 125771,
+          revenue_growth_rate: -0.08,
+          ads_roas: 2.99,
+          digg_count: 437,
+          share_count: 38,
+          comment_count: 56,
+          ad_revenue_ratio: 3.456276655310285,
+          ad_view_ratio: 19.237344061826654,
+          creator_debut: "2025-06-24",
+        },
+        {
+          video_id: "7540473678962674961",
+          video_title:
+            "Bí quyết săn được deal hời của tã Huggies nha #huggies #tã #huggiesskinperfect #bimsua #viral  @Nhi Con Cưng ",
+          belonged_creator_id: "6539736504364498946",
+          belonged_creator_handle: "ynh.i",
+          revenue: 537292220.47,
+          views: 1043870,
+          revenue_growth_rate: -0.14,
+          ads_roas: 3.61,
+          digg_count: 2299,
+          share_count: 306,
+          comment_count: 268,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 55.98168354296991,
+          creator_debut: "2025-04-20",
+        },
+        {
+          video_id: "7562138688134728981",
+          video_title:
+            "[REVIEW KHÔNG BOOKING] VIDEO REVIEW CHĂN LÔNG THỎ M2T BEDDING Chất liệu sử dụng lông thỏ nhân tạo mềm, ấm áp, mặt ngoài lớp nỉ nhung mịn màng, lõi chăn bông gòn trắng tinh khiết, chần bông tấm chắc chắn, giúp chăn luôn, không vón cục. Thích hợp với thời tiết mùa đông lạnh, mỗi nhà nên có chăn đại hàn để đủ ấm. Thiết kế sang trọng, thời thượng giá cả rất phải chăng, rất hợp lý với đại đa số gia đình. Khi cần vệ sinh, quý khách vui lòng mang chăn tới tiệm giạt là công nghiệp (không giặt máy tại nhà). Rất mong quý khánh hàng/ khán giả có thể để lại bình luận/ góp ý hay sản phẩm quan tâm nhé. * Chúng tôi nhận hoa hồng từ các nhãn hàng khi bán/ giới thiệu/ trải nghiệm các sản phẩm được liên kết với video này. * #taphoapewpew #pewpew #m2tbedding #chanlongtho #chanmuadong #chandaihan",
+          belonged_creator_id: "7185560290230420482",
+          belonged_creator_handle: "realpewpew",
+          revenue: 528336718.63,
+          views: 1870895,
+          revenue_growth_rate: 0.49,
+          ads_roas: 4.04,
+          digg_count: 4413,
+          share_count: 536,
+          comment_count: 102,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 41.956817459023625,
+          creator_debut: "2023-06-06",
+        },
+        {
+          video_id: "7559866158929956114",
+          video_title:
+            "ấm như này chả muốn đi làm đâu mọi người ạ #anhtayoi #M2Tbedding",
+          belonged_creator_id: "7378816343225779208",
+          belonged_creator_handle: "anhtayoireview",
+          revenue: 525661789.79,
+          views: 1505516,
+          revenue_growth_rate: 0.57,
+          ads_roas: 4.05,
+          digg_count: 12716,
+          share_count: 606,
+          comment_count: 158,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 45.175076186503496,
+          creator_debut: "2024-07-03",
+        },
+        {
+          video_id: "7562794091260448018",
+          video_title:
+            "Trả lời @phat.mens #xuhuong #tikhub #thoitrangnam #aokhoacnam #aokhoacgio ",
+          belonged_creator_id: "7301639445458650114",
+          belonged_creator_handle: "chutuxitin",
+          revenue: 494491477.54,
+          views: 2085562,
+          revenue_growth_rate: 0.24,
+          ads_roas: 4.05,
+          digg_count: 2126,
+          share_count: 188,
+          comment_count: 94,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 71.81833961301558,
+          creator_debut: "2025-02-11",
+        },
+        {
+          video_id: "7524524978033970440",
+          video_title:
+            "⚠️TIMELIVE SALE ĐÔI  #Goya  HÔM NAY: 8H30 > 24h30🔥🔥🔥 🗣️Bác nào hôm qua chưa kịp săn thì tranh thủ ngay và luôn hôm nay vào chốt 10 đơn đi ạaaaaa TOÀN DEAL KHỦNG CHỐT THỦNG VÍ LUÔN NHAAAAA🤩🤩🤩 #Goya #giaychaybogoya #mechaybo #yeuchaybo #viral #xuhuong #fyp #saledoi ",
+          belonged_creator_id: "6594041731406610433",
+          belonged_creator_handle: "goya.official",
+          revenue: 459384173.61,
+          views: 40417,
+          revenue_growth_rate: 0.08,
+          ads_roas: 0,
+          digg_count: 5436,
+          share_count: 178,
+          comment_count: 99,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2021-06-18",
+        },
+        {
+          video_id: "7532439199887133970",
+          video_title: "Giấy rút treo tường #giaytopgia #giayrut #xuhuong ",
+          belonged_creator_id: "7400283172506108933",
+          belonged_creator_handle: "huong.review79",
+          revenue: 458539135.89,
+          views: 4304546,
+          revenue_growth_rate: 0.1,
+          ads_roas: 4.66,
+          digg_count: 75132,
+          share_count: 9823,
+          comment_count: 6405,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 11.769022795899962,
+          creator_debut: "2025-01-07",
+        },
+        {
+          video_id: "7559196871340641554",
+          video_title:
+            "COMBO KHĂN TẮM TẶNG KÈM KHĂN MẶT KHĂN LAU ĐA NĂNG #khăn #khăntắm ",
+          belonged_creator_id: "7498266926922368001",
+          belonged_creator_handle: "khankhongg96",
+          revenue: 458351852.37,
+          views: 5999963,
+          revenue_growth_rate: -0.16,
+          ads_roas: 4.77,
+          digg_count: 34556,
+          share_count: 3240,
+          comment_count: 1253,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 8.31798462757187,
+          creator_debut: "2025-08-15",
+        },
+        {
+          video_id: "7562054794966273298",
+          video_title: "Thơm lắmm",
+          belonged_creator_id: "7007076708408149019",
+          belonged_creator_handle: "dinhdinhnguyenstore",
+          revenue: 430531266.28,
+          views: 5387725,
+          revenue_growth_rate: 0.06,
+          ads_roas: 4.74,
+          digg_count: 10836,
+          share_count: 307,
+          comment_count: 147,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 15.902556273751909,
+          creator_debut: "2021-09-14",
+        },
+        {
+          video_id: "7559933006190873876",
+          video_title:
+            "Cam kết uy tín đảm bảo quyền lợi cho các khách hàng nhà MQSkin #mqskin #trangrang #saptrangrang #kemdanhrang #lamtrangrang",
+          belonged_creator_id: "6814294524929721345",
+          belonged_creator_handle: "mqskin.tuyendoan",
+          revenue: 429590206.99,
+          views: 213561,
+          revenue_growth_rate: 0.76,
+          ads_roas: 4.63,
+          digg_count: 54,
+          share_count: 4,
+          comment_count: 53,
+          ad_revenue_ratio: 79.87698798252191,
+          ad_view_ratio: 98.41918702384798,
+          creator_debut: "2025-04-22",
+        },
+        {
+          video_id: "7562912110808698133",
+          video_title:
+            "Điện thoại redmi 15 đang khuyến mãi, tranh thủ săn đi mn nhé#xuhuong #xuhuong #xuhuong ",
+          belonged_creator_id: "6876793332333986818",
+          belonged_creator_handle: "thien_thanh858",
+          revenue: 400812389.06,
+          views: 228031,
+          revenue_growth_rate: 0.44,
+          ads_roas: 3.98,
+          digg_count: 629,
+          share_count: 15,
+          comment_count: 83,
+          ad_revenue_ratio: 78.36664626163387,
+          ad_view_ratio: 98.62957229499497,
+          creator_debut: "2025-02-14",
+        },
+        {
+          video_id: "7541593431697657095",
+          video_title:
+            "Khám phá Redmi 15 - Chiếc điện thoại với viên pin 7000mAh #xiaomi #redmi #review #redmi15 #muataitiktokshop ",
+          belonged_creator_id: "7426265169393796104",
+          belonged_creator_handle: "xiaomistore.vn",
+          revenue: 380271987.67,
+          views: 101360,
+          revenue_growth_rate: 0.14,
+          ads_roas: 3.47,
+          digg_count: 3415,
+          share_count: 168,
+          comment_count: 231,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 100,
+          creator_debut: "2025-02-02",
+        },
+        {
+          video_id: "7561817829469654290",
+          video_title:
+            "Huggies tặng 3 chuyến đi Trung Quốc - Chỉ có tại Super Brand Day 20-21-22/10 #HuggiesSuperBrandDay #GauMeViDai #panda #huggies #mebimsua",
+          belonged_creator_id: "7194339121556112389",
+          belonged_creator_handle: "huggies.vn",
+          revenue: 367701258.51,
+          views: 169638,
+          revenue_growth_rate: -0.27,
+          ads_roas: 3.84,
+          digg_count: 237,
+          share_count: 17,
+          comment_count: 4,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 97.10736981100932,
+          creator_debut: "2024-02-02",
+        },
+        {
+          video_id: "7562153376499371284",
+          video_title:
+            "Máy bơm hơi xe dùng pin sạc dễ dàng để trong cốp xe yên tâm đi ra đường, giá hời mọi người tranh thủ săn nha  #maybomxe #xe #bomxemini #xeoto #xemay  @Ngân BaBy 95  @Ngân BaBy 95  @Ngân BaBy 95 ",
+          belonged_creator_id: "7408741674916283399",
+          belonged_creator_handle: "nganbaby.95",
+          revenue: 367415161.37,
+          views: 5226545,
+          revenue_growth_rate: 0.04,
+          ads_roas: 4.68,
+          digg_count: 27932,
+          share_count: 2512,
+          comment_count: 590,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 8.659315092475047,
+          creator_debut: "2024-12-30",
+        },
+        {
+          video_id: "7562794624394267911",
+          video_title:
+            "Bị bao tử mà ăn uống xả láng luôn #suanghegaolut #thuanchay #baotu #songkhoe ",
+          belonged_creator_id: "7021476019966198785",
+          belonged_creator_handle: "cogaikhmer97",
+          revenue: 352442549.41,
+          views: 2086197,
+          revenue_growth_rate: -0.2,
+          ads_roas: 4.07,
+          digg_count: 10354,
+          share_count: 1404,
+          comment_count: 191,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 53.510095163591934,
+          creator_debut: "2022-05-05",
+        },
+        {
+          video_id: "7561781481010367765",
+          video_title:
+            "Tin nóng: Mua tã Huggies Skincare vừa chứa tràm trà dịu da, lại còn ưu đãi CỰC KHỦNG duy nhất Super Brand Day 20-21-22/10 nè cả nhà! #HuggiesSuperBrandDay #GauMeViDai #panda #huggies #mebimsua",
+          belonged_creator_id: "7194339121556112389",
+          belonged_creator_handle: "huggies.vn",
+          revenue: 343332876.02,
+          views: 212925,
+          revenue_growth_rate: 0.15,
+          ads_roas: 3.14,
+          digg_count: 263,
+          share_count: 67,
+          comment_count: 3,
+          ad_revenue_ratio: 22.007256138443868,
+          ad_view_ratio: 45.76916754725843,
+          creator_debut: "2024-02-02",
+        },
+        {
+          video_id: "7515686468178758930",
+          video_title:
+            "#2in1cushion #cushion #kemnen #truffle #xuhuong #Gmeelanvn #GMEELANcushion",
+          belonged_creator_id: "7146107923839140890",
+          belonged_creator_handle: "havy29.11",
+          revenue: 331598369.9,
+          views: 987405,
+          revenue_growth_rate: -0.02,
+          ads_roas: 3.57,
+          digg_count: 10877,
+          share_count: 923,
+          comment_count: 236,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 55.749869607709094,
+          creator_debut: "2024-02-02",
+        },
+        {
+          video_id: "7554788029475360008",
+          video_title:
+            "Siêu phẩm nhà Torano #xuhuong #tikhub #thoitrangnam #aokhoacnam #aokhoacgio ",
+          belonged_creator_id: "7301639445458650114",
+          belonged_creator_handle: "chutuxitin",
+          revenue: 320559721.92,
+          views: 864227,
+          revenue_growth_rate: 0.29,
+          ads_roas: 3.82,
+          digg_count: 1550,
+          share_count: 199,
+          comment_count: 125,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 89.42453776611931,
+          creator_debut: "2025-02-11",
+        },
+        {
+          video_id: "7564343736310828308",
+          video_title:
+            "Cả nhà thấy 2ce e giốg nhau k mn @Mỏ hỗn mini😅  #tranquynh #ecochic ",
+          belonged_creator_id: "7155478877414409242",
+          belonged_creator_handle: "quynhtrandaily",
+          revenue: 309076918.12,
+          views: 334150,
+          revenue_growth_rate: 0.48,
+          ads_roas: 3.64,
+          digg_count: 7290,
+          share_count: 105,
+          comment_count: 178,
+          ad_revenue_ratio: 44.20647777892062,
+          ad_view_ratio: 45.195271584617686,
+          creator_debut: "2022-10-25",
+        },
+        {
+          video_id: "7562221453601525010",
+          video_title:
+            "Vì sao mua chăn nhà e ko lo $ ship là đây ạ. #chancoco #channilongtho #nhacuaenn ",
+          belonged_creator_id: "7320132696473388034",
+          belonged_creator_handle: "nhacuaenn",
+          revenue: 293485779.71,
+          views: 3496641,
+          revenue_growth_rate: 0.48,
+          ads_roas: 4.46,
+          digg_count: 29756,
+          share_count: 1121,
+          comment_count: 672,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 17.10367178100354,
+          creator_debut: "2024-06-20",
+        },
+        {
+          video_id: "7527992049472179464",
+          video_title:
+            "Mua 1 mà được tặng tới 2, lại còn là sữa tắm thiên nhiên Lifebuoy? Nghe tưởng đùa mà deal thật đó! #hoptaccungunilever #unileverchamsoccanhan #lifebuoy",
+          belonged_creator_id: "7147601645660144666",
+          belonged_creator_handle: "unileverchamsoccanhan",
+          revenue: 291997372.89,
+          views: 1251138,
+          revenue_growth_rate: 0.65,
+          ads_roas: 4.06,
+          digg_count: 6961,
+          share_count: 372,
+          comment_count: 127,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 40.431511152247,
+          creator_debut: "2024-02-19",
+        },
+        {
+          video_id: "7562793065254079751",
+          video_title:
+            "Tổng hợp các vị thập cẩm nhà Lâm Thuỷ siêu hot hit #teamthapcam #banhtrungthulamthuy ",
+          belonged_creator_id: "7095071270736364546",
+          belonged_creator_handle: "hieubanhlamthuy",
+          revenue: 289833681.97,
+          views: 415414,
+          revenue_growth_rate: -0.03,
+          ads_roas: 3.6,
+          digg_count: 451,
+          share_count: 37,
+          comment_count: 20,
+          ad_revenue_ratio: 66.87813207423928,
+          ad_view_ratio: 85.38542273491024,
+          creator_debut: "2022-05-07",
+        },
+        {
+          video_id: "7559458618588974344",
+          video_title:
+            "1 năm dưỡng da bằng 3 tháng dưỡng huyết mọi người nhé. Tìm hiểu Mật táo đỏ Tâm An uống đi ạ 💯 #mattaodo #thuanchayvn #chamsocsuckhoechudong #yeubanthan ",
+          belonged_creator_id: "6573557917633593345",
+          belonged_creator_handle: "sam.xinchao",
+          revenue: 289492827.47,
+          views: 1717496,
+          revenue_growth_rate: -0.02,
+          ads_roas: 3.86,
+          digg_count: 11290,
+          share_count: 941,
+          comment_count: 360,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 50.64966672411464,
+          creator_debut: "2024-02-16",
+        },
+        {
+          video_id: "7561319687171083528",
+          video_title:
+            "Tranh thủ sắm áo gió trước khi gió mùa về thuiii #tiktokshop #huonglyreview #huonglyshop #torano #aogio #aokhoacgio #aokhoactorano #torano",
+          belonged_creator_id: "7218794503036421125",
+          belonged_creator_handle: "nhac8x.huongly",
+          revenue: 288237160.77,
+          views: 945237,
+          revenue_growth_rate: 0.2,
+          ads_roas: 3.81,
+          digg_count: 76,
+          share_count: 1,
+          comment_count: 2,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 77.63872975772213,
+          creator_debut: "2024-08-23",
+        },
+        {
+          video_id: "7563232167245991188",
+          video_title: "",
+          belonged_creator_id: "7058674089917367298",
+          belonged_creator_handle: "tinhot.2025",
+          revenue: 287034484.14,
+          views: 491503,
+          revenue_growth_rate: 0.76,
+          ads_roas: 0,
+          digg_count: 24300,
+          share_count: 1716,
+          comment_count: 818,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2025-10-08",
+        },
+        {
+          video_id: "7563925394466950418",
+          video_title: "Khoác ngon 🤩 #buihaistore #xuhuongtiktok ",
+          belonged_creator_id: "7493656944122889222",
+          belonged_creator_handle: "buihaistore05",
+          revenue: 275512365.27,
+          views: 133688,
+          revenue_growth_rate: 0.76,
+          ads_roas: 0,
+          digg_count: 1965,
+          share_count: 93,
+          comment_count: 12,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2025-07-05",
+        },
+        {
+          video_id: "7564245149123955976",
+          video_title:
+            "Bỏ qua là tiếc á nhen #cochanhtaphoa #xuhuong #nuocgiattopgia ",
+          belonged_creator_id: "7324347169975469058",
+          belonged_creator_handle: "cochanhtaphoa",
+          revenue: 269511493.91,
+          views: 1429528,
+          revenue_growth_rate: 0.76,
+          ads_roas: 4.25,
+          digg_count: 3630,
+          share_count: 440,
+          comment_count: 87,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 38.1971531862265,
+          creator_debut: "2025-05-08",
+        },
+        {
+          video_id: "7563249875413028116",
+          video_title:
+            "Da bé êm, bụng mẹ ấm, ví mẹ vui vì deal siêu hời đang diễn ra đó nha!! 🎁 Săn liền tay Huggies Naturemade Panda để rinh quà xịn và ưu đãi cực hấp dẫn kẻo lỡ các mom ơiiii #HuggiesSuperBrandDay #GauMeViDai #panda #huggies #mebimsua",
+          belonged_creator_id: "7440872322276656135",
+          belonged_creator_handle: "naturemade.vn",
+          revenue: 269133695.05,
+          views: 4221713,
+          revenue_growth_rate: -0.41,
+          ads_roas: 5.04,
+          digg_count: 3910,
+          share_count: 138,
+          comment_count: 30,
+          ad_revenue_ratio: 78.6292639665808,
+          ad_view_ratio: 5.854329747190299,
+          creator_debut: "2025-02-13",
+        },
+        {
+          video_id: "7562543417943723284",
+          video_title:
+            "Tiết kiệm 10 triệu để tiêu Tết thôi chị em ơi #hopgotietkiem #tietkiemtien #xuhuongtiktok #taphoanhabi ",
+          belonged_creator_id: "7427060938773742600",
+          belonged_creator_handle: "taphoanhabi9096",
+          revenue: 262552849.67,
+          views: 19666805,
+          revenue_growth_rate: 0.38,
+          ads_roas: 5.34,
+          digg_count: 73724,
+          share_count: 7524,
+          comment_count: 774,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 6.793858992347766,
+          creator_debut: "2025-08-22",
+        },
+        {
+          video_id: "7558051294099852551",
+          video_title: "Giày xinh ✨🍂📸 #tieutieuofficia #review #unbox ",
+          belonged_creator_id: "6570678450168102913",
+          belonged_creator_handle: "_tieutieu_",
+          revenue: 258297161.69,
+          views: 531919,
+          revenue_growth_rate: -0.29,
+          ads_roas: 0,
+          digg_count: 20329,
+          share_count: 1580,
+          comment_count: 219,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2018-06-24",
+        },
+        {
+          video_id: "7555111387064831252",
+          video_title:
+            "20/10 mà nhận đc set này chắc cảm động luôn quá 🥹✨🌸 #hapas #tuixachhapas #nuochoatuixach #20thang10 #setqua20_10 ",
+          belonged_creator_id: "7035780775774389250",
+          belonged_creator_handle: "kevaa_21",
+          revenue: 258196428.72,
+          views: 248179,
+          revenue_growth_rate: -0.49,
+          ads_roas: 3.3,
+          digg_count: 3043,
+          share_count: 1771,
+          comment_count: 271,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 100,
+          creator_debut: "2022-01-29",
+        },
+        {
+          video_id: "7561775961461558548",
+          video_title:
+            "Mua tã tặng thêm tã tại Super Brand Day! Sự kiện lớn nhất năm cùng hàng loạt quà tặng hấp dẫn khác vào ngày 20-21-22/10 các mom đừng bỏ lỡ nha! #HuggiesSuperBrandDay #GauMeViDai #panda #huggies #mebimsua",
+          belonged_creator_id: "7194339121556112389",
+          belonged_creator_handle: "huggies.vn",
+          revenue: 252193103.63,
+          views: 248252,
+          revenue_growth_rate: -0.24,
+          ads_roas: 3.4,
+          digg_count: 528,
+          share_count: 87,
+          comment_count: 5,
+          ad_revenue_ratio: 70.9206922790967,
+          ad_view_ratio: 51.61287723764562,
+          creator_debut: "2024-02-02",
+        },
+        {
+          video_id: "7466702038982806791",
+          video_title:
+            "Redmi Note 14 chính thức ra mắt! Hội tụ đầy đủ yếu tố để trở thành máy quốc dân. #xiaomi #redmi #redminote14 #smartphone #education #LearnOnTikTok ",
+          belonged_creator_id: "7426265169393796104",
+          belonged_creator_handle: "xiaomistore.vn",
+          revenue: 250284680.35,
+          views: 742667,
+          revenue_growth_rate: 0.2,
+          ads_roas: 3.55,
+          digg_count: 16712,
+          share_count: 1713,
+          comment_count: 1210,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 49.535659992971276,
+          creator_debut: "2025-02-02",
+        },
+        {
+          video_id: "7558292817521544455",
+          video_title: "Bộ dao kéo 6 món Redchef ",
+          belonged_creator_id: "7377252542797726737",
+          belonged_creator_handle: "namoinam",
+          revenue: 248059941.08,
+          views: 444693,
+          revenue_growth_rate: 0,
+          ads_roas: 3.16,
+          digg_count: 434,
+          share_count: 64,
+          comment_count: 6,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 57.02383442060028,
+          creator_debut: "2024-07-21",
+        },
+        {
+          video_id: "7562067896764255496",
+          video_title: "Một chiếc áo len có màu hồng siêu nhẹ nhàng 💞",
+          belonged_creator_id: "7524650149092918288",
+          belonged_creator_handle: "bonlendo.o.0",
+          revenue: 247564855.83,
+          views: 3060731,
+          revenue_growth_rate: 0.41,
+          ads_roas: 4.68,
+          digg_count: 22471,
+          share_count: 2818,
+          comment_count: 128,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 12.690824512183527,
+          creator_debut: "2025-08-13",
+        },
+        {
+          video_id: "7555876479867882760",
+          video_title: "Nè 😚 #congken ",
+          belonged_creator_id: "6710364054755492865",
+          belonged_creator_handle: "ntcong5",
+          revenue: 245992225.78,
+          views: 2106520,
+          revenue_growth_rate: -0.34,
+          ads_roas: 0,
+          digg_count: 104480,
+          share_count: 6608,
+          comment_count: 2531,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2025-01-23",
+        },
+        {
+          video_id: "7563134294613314834",
+          video_title:
+            "Trả lời @David Hồ 🇻🇳 không tin nửa thì chịu 😂#xuhuong #liby ",
+          belonged_creator_id: "6570106774841524225",
+          belonged_creator_handle: "sonnguyen1961993",
+          revenue: 244009813.08,
+          views: 3494182,
+          revenue_growth_rate: 0.53,
+          ads_roas: 4.68,
+          digg_count: 103,
+          share_count: 2,
+          comment_count: 10,
+          ad_revenue_ratio: 80.00000000000003,
+          ad_view_ratio: 20.97492345848041,
+          creator_debut: "2025-02-03",
+        },
+        {
+          video_id: "7560285907379686657",
+          video_title:
+            "Công nhận là sạch thiệt nha #mienglausantantrongnuoc #mienglausan ",
+          belonged_creator_id: "6526518669681590273",
+          belonged_creator_handle: "memayvamon",
+          revenue: 242367357.49,
+          views: 3973281,
+          revenue_growth_rate: -0.1,
+          ads_roas: 4.6,
+          digg_count: 137536,
+          share_count: 5898,
+          comment_count: 839,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 18.65181445762331,
+          creator_debut: "2019-04-05",
+        },
+        {
+          video_id: "7550201800083639560",
+          video_title:
+            "Có mấy trăm mà được áo phao xịn sò thế này luôn ạ #phuongnguyenguno #guno ",
+          belonged_creator_id: "7173557568269829146",
+          belonged_creator_handle: "phuong.hxx",
+          revenue: 242260798.16,
+          views: 438624,
+          revenue_growth_rate: 0.54,
+          ads_roas: 3.55,
+          digg_count: 3562,
+          share_count: 275,
+          comment_count: 287,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 97.05647661778653,
+          creator_debut: "2023-01-27",
+        },
+        {
+          video_id: "7556994758212586759",
+          video_title:
+            "Đủ đắt chưa ạ #xuhuong #tikhub #thoitrangnam #aokhoacnam #aodanam ",
+          belonged_creator_id: "7301639445458650114",
+          belonged_creator_handle: "chutuxitin",
+          revenue: 230982869.87,
+          views: 642946,
+          revenue_growth_rate: 0.53,
+          ads_roas: 3.68,
+          digg_count: 1440,
+          share_count: 99,
+          comment_count: 117,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 85.69568828486373,
+          creator_debut: "2025-02-11",
+        },
+        {
+          video_id: "7557903876129639687",
+          video_title: "#xuhuong#mayhutbui",
+          belonged_creator_id: "7296323856770745362",
+          belonged_creator_handle: "giahanstyle",
+          revenue: 227546355.16,
+          views: 1317269,
+          revenue_growth_rate: -0.38,
+          ads_roas: 4.15,
+          digg_count: 6424,
+          share_count: 613,
+          comment_count: 369,
+          ad_revenue_ratio: 79.99999999999999,
+          ad_view_ratio: 13.39688400774633,
+          creator_debut: "2025-03-14",
+        },
+        {
+          video_id: "7515427470158351624",
+          video_title:
+            "#xuhuongtiktok #xuhuong #videohangmevabe #bimchobe #bimquanchobe #tachobe #bimdan #taquanchobe #tadanchobe #bimhipbaby #bimhipgipa ",
+          belonged_creator_id: "7283383283482723330",
+          belonged_creator_handle: "nhuyshopbimchobeyeu",
+          revenue: 227089392.38,
+          views: 116967,
+          revenue_growth_rate: 0.27,
+          ads_roas: 2.8,
+          digg_count: 2561,
+          share_count: 160,
+          comment_count: 175,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 100,
+          creator_debut: "2024-03-06",
+        },
+        {
+          video_id: "7558473129606024455",
+          video_title:
+            "Đắp em chăn này là chỉ muốn chìm vào giấc ngủ ngay lun #tiktokshop #huonglyreview #review #chanlongtho #chanlongthocaocap #m2tbeddingg",
+          belonged_creator_id: "7218794503036421125",
+          belonged_creator_handle: "nhac8x.huongly",
+          revenue: 220557558.72,
+          views: 678848,
+          revenue_growth_rate: 0.56,
+          ads_roas: 3.56,
+          digg_count: 4405,
+          share_count: 232,
+          comment_count: 87,
+          ad_revenue_ratio: 80.00000000000001,
+          ad_view_ratio: 50.68189049684171,
+          creator_debut: "2024-08-23",
+        },
+        {
+          video_id: "7564001921963429138",
+          video_title:
+            "Áo khoác gió cao cấp #tikhub #thoitrangnam #xuhuong #aokhoacnam #aokhoacgio ",
+          belonged_creator_id: "7301639445458650114",
+          belonged_creator_handle: "chutuxitin",
+          revenue: 215781725.05,
+          views: 650232,
+          revenue_growth_rate: 0.63,
+          ads_roas: 3.99,
+          digg_count: 22,
+          share_count: 2,
+          comment_count: 1,
+          ad_revenue_ratio: 79.42381505152706,
+          ad_view_ratio: 98.43563528094587,
+          creator_debut: "2025-02-11",
+        },
+        {
+          video_id: "7558838848134974738",
+          video_title:
+            "🔥 Ưu đãi Mega Live 10/10 - săn ngay Combo 2 Nước Giặt OMO 4KG1 với 4 dòng Hương Hoa Oải Hương Thái, Chuyên Gia Cửa Trước, Ngăn ngừa Ẩm Mốc và Cho Quần Áo Bé Yêu. Voucher up to 20% và Freeship bao laaaa #TikTokShop1010 #ChinhHangSaleDam #HoptaccungUnilever",
+          belonged_creator_id: "7142688724411843611",
+          belonged_creator_handle: "unilevergiadinh",
+          revenue: 211988695.03,
+          views: 807054,
+          revenue_growth_rate: 0.01,
+          ads_roas: 3.52,
+          digg_count: 187,
+          share_count: 13,
+          comment_count: 1,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 63.541596968728236,
+          creator_debut: "2022-11-27",
+        },
+        {
+          video_id: "7558816530700553493",
+          video_title:
+            "chăm da trên máy bay với cô Nguyên  #AHCVietnam  #HoptaccungUnilever #goclamdep ",
+          belonged_creator_id: "111075566035816448",
+          belonged_creator_handle: "nguyennewin",
+          revenue: 207481321.61,
+          views: 2618247,
+          revenue_growth_rate: 0.64,
+          ads_roas: 4.9,
+          digg_count: 10736,
+          share_count: 169,
+          comment_count: 32,
+          ad_revenue_ratio: 79.25317687465913,
+          ad_view_ratio: 15.993678212941713,
+          creator_debut: "2020-02-27",
+        },
+        {
+          video_id: "7561279898183093522",
+          video_title:
+            "Tặng quà mẹ sớm ngày 20/10 mà mẹ chỉ lo sợ con tốn kém thôi, mong mẹ ngủ ngon hơn và không còn nhức mỏi người như trước nữa #xuhuong #thamngaicuudongy ",
+          belonged_creator_id: "6933924072322434049",
+          belonged_creator_handle: "hamyt.18",
+          revenue: 206419412.44,
+          views: 1220023,
+          revenue_growth_rate: -0.42,
+          ads_roas: 0,
+          digg_count: 23328,
+          share_count: 799,
+          comment_count: 152,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2025-04-04",
+        },
+        {
+          video_id: "7554644545707740423",
+          video_title:
+            "nghỉ sao mua 30 cành 1 lọ vậy em #thinhhanh #van2lua #yenchungsan #anngon #totchosuckhoe ",
+          belonged_creator_id: "7350211508888273921",
+          belonged_creator_handle: "van2lua",
+          revenue: 206137617.4,
+          views: 273096,
+          revenue_growth_rate: -0.03,
+          ads_roas: 0,
+          digg_count: 12966,
+          share_count: 485,
+          comment_count: 755,
+          ad_revenue_ratio: 0,
+          ad_view_ratio: 0,
+          creator_debut: "2024-11-29",
+        },
+        {
+          video_id: "7449699793456221458",
+          video_title: "Ae lưu ý nhé #kem #kembossman #nam ",
+          belonged_creator_id: "7231471157101954054",
+          belonged_creator_handle: "ds.trang5",
+          revenue: 205112860.49,
+          views: 1354992,
+          revenue_growth_rate: 0.02,
+          ads_roas: 3.96,
+          digg_count: 52715,
+          share_count: 2466,
+          comment_count: 2994,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 16.923863757129194,
+          creator_debut: "2024-12-18",
+        },
+        {
+          video_id: "7561102104148856072",
+          video_title:
+            "anh em con nay có combo 10 bịch giấy rút treo tường hơn 100 thôi ạ #xuhuong #xuhuongtiktok",
+          belonged_creator_id: "7512064774814319636",
+          belonged_creator_handle: "tp.ho.bonu.2",
+          revenue: 204014646,
+          views: 508344,
+          revenue_growth_rate: 0.76,
+          ads_roas: 4.25,
+          digg_count: 74480,
+          share_count: 2704,
+          comment_count: 1854,
+          ad_revenue_ratio: 80,
+          ad_view_ratio: 48.55983349857577,
+          creator_debut: "2025-07-25",
+        },
+      ];
+
+      async function loadVideos() {
+        // Respect the free API limit: 1 request / second.
+        // We'll fetch videos one-by-one with a 1s delay between requests.
+        // Also add a simple retry if the API explicitly returns the free-limit message.
+        const table = document.getElementById("videoTable");
+
+        const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+        for (const v of videosData) {
+          const api = `https://www.tikwm.com/api/?url=https://www.tiktok.com/@${v.belonged_creator_handle}/video/${v.video_id}`;
+          const maxRetries = 3;
+          let attempt = 0;
+          let fetched = false;
+          let data = null;
+
+          while (attempt < maxRetries && !fetched) {
+            attempt += 1;
+            try {
+              const res = await fetch(api);
+              // If fetch itself fails, try again after waiting
+              if (!res.ok) throw new Error("HTTP " + res.status);
+              data = await res.json();
+
+              // TikWM returns a JSON with {code: -1, msg: 'Free Api Limit...'} when rate limited
+              if (
+                data &&
+                data.code === -1 &&
+                /Free Api Limit/i.test(data.msg || "")
+              ) {
+                // Wait a bit longer before retrying
+                await sleep(2000);
+                continue;
+              }
+
+              fetched = true;
+            } catch (err) {
+              // On network error, wait then retry
+              if (attempt < maxRetries) await sleep(1500);
+              else {
+                console.error("Fetch failed for", api, err);
+              }
+            }
+          }
+
+          if (!fetched || !data || !data.data) {
+            const fallbackRow = `
+              <tr>
+                <td>Không tải được video</td>
+                <td><img src="" alt="cover"/></td>
+                <td>
+                  <strong>${v.video_title}</strong><br>
+                  View: ${v.views.toLocaleString()}<br>
+                  Like: ${v.digg_count}<br>
+                  Comment: ${v.comment_count}<br>
+                  Share: ${v.share_count}
+                </td>
+                <td>
+                  <button disabled>Không có</button>
+                </td>
+              </tr>
+            `;
+            table.insertAdjacentHTML("beforeend", fallbackRow);
+          } else {
+            const videoUrl = data.data.play;
+            const coverImg = data.data.cover;
+
+            const row = `
+              <tr>
+                <td><video src="${videoUrl}" controls preload="metadata" playsinline></video></td>
+                <td><img src="${coverImg}" alt="cover"></td>
+                <td>
+                  <strong>${v.video_title}</strong><br>
+                  View: ${v.views.toLocaleString()}<br>
+                  Like: ${v.digg_count}<br>
+                  Comment: ${v.comment_count}<br>
+                  Share: ${v.share_count}
+                </td>
+                <td>
+                  <button onclick="downloadVideo('${videoUrl}')">Tải xuống</button>
+                </td>
+              </tr>
+            `;
+
+            table.insertAdjacentHTML("beforeend", row);
+          }
+
+          // Wait 1 second before the next API call to respect the free rate limit
+          await sleep(1000);
+        }
+      }
+
+      async function downloadVideo(url) {
+        try {
+          const response = await fetch(url);
+          const blob = await response.blob();
+          const blobUrl = URL.createObjectURL(blob);
+
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = "tiktok_no_watermark.mp4";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          URL.revokeObjectURL(blobUrl);
+        } catch (err) {
+          alert(
+            "Download lỗi! Có thể TikTok chặn request. Hãy thử mở video bằng mạng khác."
+          );
+          console.error(err);
+        }
+      }
+
+      loadVideos();
+    </script>
+  </body>
 </html>
